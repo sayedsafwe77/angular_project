@@ -297,18 +297,12 @@ body {
   --togglebg: #444;
 }
 .search{
-  position: absolute;
-  top: 3.5vh;
-  left: 47vw;
+  position: flex;
+  margin-left:50vw;
+  margin-top: 10vh;
   height: 5vh;
-  width: 6vw;
+  width: 25vw;
   font-size: 1.1em;
-  cursor: pointer;
   border-radius: 5px;
   outline: none;
-}
-.search:hover{
-  background-color: #BC3B59;
-  color: #f1f1f1;
-  
 }

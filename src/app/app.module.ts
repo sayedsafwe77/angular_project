@@ -11,6 +11,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { NavComponent } from './nav/nav.component';
 import { AddToCardComponent } from './add-to-card/add-to-card.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { SearchPipe } from './search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
     ProductDetailsComponent,
     CheckoutComponent,
     NavComponent,
-    AddToCardComponent
+    AddToCardComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

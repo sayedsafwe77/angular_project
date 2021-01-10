@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<button class="search" (click)="diplaySearchResult()">Search</button>
+<!-- <button class="search" (click)="diplaySearchResult()">Search</button> -->
+<input type="text" [(ngModel)]='term' class="form-control search" placeholder="search for your product here..">
+
 <div class="block" id="block">
-    <tr *ngFor='let product of data; index as i'>       
+    <tr *ngFor='let product of data | search:term; index as i'>       
     <td >
         <div class="wrapper">
         <div class="container" [style.background-image]="imgsrc[i]" [style.background-position]="imgposition" [style.background-size]="imgrSize"    >
