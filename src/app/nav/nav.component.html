@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<header>
+    <nav>
+      <div class="toggler">
+        <a href="#" class="open-btn"><i class="fas fa-bars"></i></a>
+        <a href="#" class="close-btn"><i class="fas fa-times"></i></a>
+       
+      </div>
+      <div class="toggle">
+        <li class="nav-item active"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">Users</a></li>
+        <li class="nav-item"><a href="#">Topics</a></li>
+      </div>
+      <div class="nav-brand">
+        <a href="#">SIHILLALOU</a>
+      </div>
+      <ul class="nav-items menu-1">
+        
+        <li class="nav-item home"><a routerLink="/">Home</a></li>
+        <li class="nav-item"><a href="#">Users</a></li>
+        <li class="nav-item"><a href="#">Topics</a></li>
+      
+        <form #searchForm='ngForm' (ngSubmit)="productSearch(searchForm)">
+          <div class="form-group">
+              <input 
+              placeholder="Search…"
+              type="text"
+              class="form-control s-input nav-item"
+              ngModel
+              autocomplete="off" 
+              maxlength="240"  
+              aria-label="Search"
+              #Search= ngModel
+              name='Search'
+              />
+          </div>
+      </form>
+      </ul>
+      <ul class="nav-items mg-la">
+        <li class="nav-item"> <a routerLink="/cardList"><i class="fas fa-cart-plus"></i></a></li>
+        <li class="nav-item"><a href="#" class="btn">Log in</a></li>
+        <li class="nav-item"><a href="#" class="btn">Sign up</a></li>
+      </ul>
+    </nav>
+  </header>
