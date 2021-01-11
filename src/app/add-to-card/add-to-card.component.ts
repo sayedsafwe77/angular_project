@@ -42,10 +42,10 @@ export class AddToCardComponent implements OnInit {
   updateCard(removedId){
     let removedprice=this.data.filter(item => item['id']==removedId)[0]['price'];
     let removedquantity=this.cardlist.filter(item => item['id']==removedId)[0]['quantity'];
-    this.total=Math.floor(this.total-(removedprice*removedquantity));
+    this.total=Math.ceil(this.total-(removedprice*removedquantity));
    
     let newCard=this.cardlist.filter(item => item['id']!=removedId);
-  
+    this.cardlist=newCard;
     this.data=this.data.filter(item => item['id']!=removedId);
     localStorage.setItem('addToCard',JSON.stringify(newCard));
   }

@@ -25,6 +25,7 @@ export class AllProductComponent implements OnInit {
   burchasvalue: any;
   product:any;
   term: string;
+  lastsearch:any;
   constructor(private userservice: SearchService,
               private route:Router,
               private diplayedProduct:DataService) { }
@@ -72,17 +73,33 @@ export class AllProductComponent implements OnInit {
   }
   ngAfterViewInit()
   {
-    setTimeout(this.makeevent,5000);
+    setTimeout(this.makeevent,3000);
+  }
+  ngOnChanges(item){
+    // console.log(this.term);
+    
+    if(this.term!=undefined)
+    {
+      
+        console.log(this.term);
+        // console.log(this.lastsearch);
+        // this.lastsearch=this.term;
+        // setTimeout(this.makeevent,3000);
+     
+        
+      
+    }
+    console.log(item);
   }
   makeevent()	
     {
     this.card=document.getElementsByClassName("buy");
     this.rem=document.getElementsByClassName("remove");
-    // console.log(this.card);
+    // console.log(this.card.length);
 
     // this.card=Array.prototype.slice.call(this.card);
     
-    for(let i=0;i<20;i++)
+    for(let i=0;i<this.card.length;i++)
     {
       this.burchas=document.getElementsByClassName("burchas");
       this.burchas[i].addEventListener('click',()=>{
