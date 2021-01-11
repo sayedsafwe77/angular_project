@@ -141,10 +141,12 @@ body {
   text-align: center;
 }
 .totalprice{
-  background-color: #2aa7c7;
+  background-color: #BC3B59;
   /* color: #440f1d; */
-  margin-left: 3vw;
+  margin-left: 40vw;
   width: 25vw;
+  height: 10vh;
+  text-align: center;
   border-radius: 15px;
 }
 .price{
@@ -171,7 +173,7 @@ body {
   background-color:#BC3B59;
   border-radius: 10px;
   height: 40px;
-  width: 6vw;
+  width: 9vw;
   cursor: pointer;
   color: #fff;
   font-size: 1.3em;
