@@ -24,6 +24,7 @@ export class AllProductComponent implements OnInit {
   burchas: any;
   burchasvalue: any;
   product:any;
+  term: string;
   constructor(private userservice: SearchService,
               private route:Router,
               private diplayedProduct:DataService) { }
