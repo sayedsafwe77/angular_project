@@ -686,14 +686,24 @@ class AllProductComponent {
         this.data = arrproduct;
     }
     ngAfterViewInit() {
-        setTimeout(this.makeevent, 5000);
+        setTimeout(this.makeevent, 3000);
+    }
+    ngOnChanges(item) {
+        // console.log(this.term);
+        if (this.term != undefined) {
+            console.log(this.term);
+            // console.log(this.lastsearch);
+            // this.lastsearch=this.term;
+            // setTimeout(this.makeevent,3000);
+        }
+        console.log(item);
     }
     makeevent() {
         this.card = document.getElementsByClassName("buy");
         this.rem = document.getElementsByClassName("remove");
-        // console.log(this.card);
+        // console.log(this.card.length);
         // this.card=Array.prototype.slice.call(this.card);
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < this.card.length; i++) {
             this.burchas = document.getElementsByClassName("burchas");
             this.burchas[i].addEventListener('click', () => {
                 let addToCard = [];
@@ -754,7 +764,7 @@ class AllProductComponent {
     }
 }
 AllProductComponent.ɵfac = function AllProductComponent_Factory(t) { return new (t || AllProductComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_serves_search_service__WEBPACK_IMPORTED_MODULE_1__["SearchService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_serves_data_data_service_service__WEBPACK_IMPORTED_MODULE_3__["DataService"])); };
-AllProductComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AllProductComponent, selectors: [["app-all-product"]], decls: 5, vars: 5, consts: [["rel", "stylesheet", "href", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtrustConstantResourceUrl"]("https://use.fontawesome.com/releases/v5.8.1/css/all.css"), "integrity", "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf", "crossorigin", "anonymous"], ["type", "text", "placeholder", "search for your product here..", 1, "form-control", "search", 3, "ngModel", "ngModelChange"], ["id", "block", 1, "block"], [4, "ngFor", "ngForOf"], [1, "wrapper"], [1, "container"], [1, "top5"], [1, "bottom"], [1, "left"], [1, "details"], [1, "buy", 3, "id"], [1, "fas", "fa-cart-plus", "material-icons"], [1, "right"], [1, "done"], [1, "material-icons"], ["action", "#", 1, "display-flex"], [1, "qtyminus"], ["type", "text", "name", "quantity", "value", "1", 1, "qty"], [1, "qtyplus"], [1, "fas", "fa-cart-plus", "burchas"], [1, "remove"], [1, ""], [1, "inside"], [1, "icon"], [1, "contents"], [1, "product-details"], [1, "viewDetails", 3, "click"]], template: function AllProductComponent_Template(rf, ctx) { if (rf & 1) {
+AllProductComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AllProductComponent, selectors: [["app-all-product"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]], decls: 5, vars: 5, consts: [["rel", "stylesheet", "href", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtrustConstantResourceUrl"]("https://use.fontawesome.com/releases/v5.8.1/css/all.css"), "integrity", "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf", "crossorigin", "anonymous"], ["type", "text", "placeholder", "search for your product here..", 1, "form-control", "search", 3, "ngModel", "ngModelChange"], ["id", "block", 1, "block"], [4, "ngFor", "ngForOf"], [1, "wrapper"], [1, "container"], [1, "top5"], [1, "bottom"], [1, "left"], [1, "details"], [1, "buy", 3, "id"], [1, "fas", "fa-cart-plus", "material-icons"], [1, "right"], [1, "done"], [1, "material-icons"], ["action", "#", 1, "display-flex"], [1, "qtyminus"], ["type", "text", "name", "quantity", "value", "1", 1, "qty"], [1, "qtyplus"], [1, "fas", "fa-cart-plus", "burchas"], [1, "remove"], [1, ""], [1, "inside"], [1, "icon"], [1, "contents"], [1, "product-details"], [1, "viewDetails", 3, "click"]], template: function AllProductComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "link", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AllProductComponent_Template_input_ngModelChange_1_listener($event) { return ctx.term = $event; });
@@ -904,8 +914,9 @@ class AddToCardComponent {
     updateCard(removedId) {
         let removedprice = this.data.filter(item => item['id'] == removedId)[0]['price'];
         let removedquantity = this.cardlist.filter(item => item['id'] == removedId)[0]['quantity'];
-        this.total = Math.floor(this.total - (removedprice * removedquantity));
+        this.total = Math.ceil(this.total - (removedprice * removedquantity));
         let newCard = this.cardlist.filter(item => item['id'] != removedId);
+        this.cardlist = newCard;
         this.data = this.data.filter(item => item['id'] != removedId);
         localStorage.setItem('addToCard', JSON.stringify(newCard));
     }
